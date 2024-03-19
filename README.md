@@ -9,6 +9,7 @@ It covers critical security areas such as application whitelisting, secure admin
 - Generates a detailed HTML report highlighting compliance status for each security measure.
 - Provides insights into potential security vulnerabilities and areas for improvement.
 
+## Screenshot:
 ![Essential Eight Compliance Review](https://github.com/simon-im-security/Essential-Eight-Compliance-Review/blob/main/essential-eight-compliance-review-image.png)
 
 ## Usage:
