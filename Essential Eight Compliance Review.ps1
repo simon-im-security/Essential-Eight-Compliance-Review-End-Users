@@ -222,10 +222,10 @@ function Check-DailyBackupChecks {
         }
 
         if ($oneDriveInstalled) {
-            # Check if OneDrive service is running
-            $oneDriveService = Get-Service -Name "OneSyncSvc" -ErrorAction SilentlyContinue
+            # Check if OneDrive process is running
+            $oneDriveProcess = Get-Process -Name "OneDrive*" -ErrorAction SilentlyContinue
 
-            if ($oneDriveService -ne $null -and $oneDriveService.Status -eq 'Running') {
+            if ($oneDriveProcess) {
                 return "Compliant: OneDrive is installed and the service is running for backup and synchronization."
             } else {
                 return "Non-compliant: OneDrive is installed, but the service is not running on this system."
