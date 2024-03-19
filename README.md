@@ -1,11 +1,12 @@
 # Essential Eight Security Compliance Review
 
 ## Description:
-Essential Eight Compliance Review is a PowerShell script designed to check various security compliance measures on a Windows system. It covers critical security areas such as application whitelisting, secure admin access, Windows updates, Microsoft Office macro settings, protection-based software, unnecessary services, multi-factor authentication, and daily backup checks.
+Essential Eight Compliance Review is a PowerShell script designed to check various security compliance measures on a Windows system.
+It covers critical security areas such as application whitelisting, secure admin access, Windows updates, Microsoft Office macro settings, protection-based software, unnecessary services, multi-factor authentication, and daily backup checks.
 
 ## Features:
-- Performs comprehensive security compliance checks on Windows systems.
-- Generates a detailed report highlighting compliance status for each security measure.
+- Conducts comprehensive security compliance assessments.
+- Generates a detailed HTML report highlighting compliance status for each security measure.
 - Provides insights into potential security vulnerabilities and areas for improvement.
 
 ![Essential Eight Compliance Review](https://github.com/simon-im-security/Essential-Eight-Compliance-Review/blob/main/essential-eight-compliance-review-image.png)
