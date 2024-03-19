@@ -8,15 +8,18 @@ Essential Eight Compliance Review is a PowerShell script designed to check vario
 - Generates a detailed report highlighting compliance status for each security measure.
 - Provides insights into potential security vulnerabilities and areas for improvement.
 
+![Essential Eight Compliance Review](https://github.com/simon-im-security/Essential-Eight-Compliance-Review/blob/main/essential-eight-compliance-review-image.png)
+
 ## Usage:
 To execute the script, follow these steps:
 
 1. Open PowerShell and run the following command to download the script to a temporary location:
    ```powershell
-   $url = "https://raw.githubusercontent.com/simon-im-security/Essential-Eight-Security-Check/main/Essential%20Eight%20Compliance%20Review.ps1"
+   $url = "https://raw.githubusercontent.com/simon-im-security/Essential-Eight-Compliance-Review/main/Essential%20Eight%20Compliance%20Review.ps1"
    $tempScriptPath = "$env:TEMP\EssentialEightComplianceReview.ps1"
    Invoke-WebRequest -Uri $url -OutFile $tempScriptPath
 
 2. Run the following command to temporarily change the execution policy, execute the downloaded script, and revert the execution policy back to its original state:
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope Process -Force; & $tempScriptPath; Set-ExecutionPolicy Restricted -Scope Process -Force
+
