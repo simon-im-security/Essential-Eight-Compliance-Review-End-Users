@@ -1,4 +1,4 @@
-# Essential Eight Security Compliance Review
+# Essential Eight Compliance Review
 
 ## Description:
 Essential Eight Compliance Review is a PowerShell script designed to check various security compliance measures on a Windows system.
