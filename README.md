@@ -18,3 +18,6 @@ To execute the script, follow these steps:
 Open PowerShell and execute the below command. This command will temporarily bypass any execution policy restrictions for the current session, enabling the script to execute before reverting back to the original policy.
    ```powershell
    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force; $url = "https://raw.githubusercontent.com/simon-im-security/Essential-Eight-Compliance-Review/main/Essential%20Eight%20Compliance%20Review.ps1"; $tempScriptPath = "$env:TEMP\EssentialEightComplianceReview.ps1"; Invoke-WebRequest -Uri $url -OutFile $tempScriptPath; & $tempScriptPath -ExecutionPolicy Bypass
+```
+
+> **Note:** For enhanced accuracy tailored to your enterprise, it is recommended to adjust each function accordingly. For instance, OneDrive may not be the designated enterprise backup service.
