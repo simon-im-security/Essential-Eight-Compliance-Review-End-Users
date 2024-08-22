@@ -33,9 +33,9 @@ $CheckOfficeMacros = $true   # Set to $false to disable the Microsoft Office Mac
 $OutputFolder = "$env:USERPROFILE\AppData\Local\.ComplianceReview"
 
 # Organisation-specific variables
+$BackupSoftwarePaths = "C:\Program Files\Microsoft OneDrive\OneDrive.exe", "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe"
 $ProtectionSoftware = "CrowdStrike", "Windows Defender", "bdservicehost", "Malwarebytes"
 $ServicesToIdentify = "XblAuthManager", "XboxNetApiSvc", "XblGameSave", "XboxGipSvc"
-$OneDrivePaths = "C:\Program Files\Microsoft OneDrive\OneDrive.exe", "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe"
 $WhitelistingApps = "CrowdStrike Falcon", "bdservicehost", "Ivanti Application Control"
 
 # ==========================
@@ -159,31 +159,32 @@ function Check-IdentifyUnnecessaryServices {
     }
 }
 
+# Function to check daily backup compliance
 function Check-DailyBackupChecks {
     if (-not $CheckDailyBackup) { return "Skipped" }
 
     try {
-        $oneDriveInstalled = $false
-        foreach ($path in $OneDrivePaths) {
+        $backupSoftwareInstalled = $false
+        foreach ($path in $BackupSoftwarePaths) {
             if (Test-Path $path) {
-                $oneDriveInstalled = $true
+                $backupSoftwareInstalled = $true
                 break
             }
         }
 
-        if ($oneDriveInstalled) {
-            $oneDriveProcess = Get-Process -Name "OneDrive*" -ErrorAction SilentlyContinue
+        if ($backupSoftwareInstalled) {
+            $backupSoftwareProcess = Get-Process -Name "OneDrive*" -ErrorAction SilentlyContinue
 
-            if ($oneDriveProcess) {
-                return "Compliant: OneDrive is installed and the service is running for backup and synchronisation."
+            if ($backupSoftwareProcess) {
+                return "Compliant: Backup software is installed and the service is running for backup and synchronisation."
             } else {
-                return "Non-compliant: OneDrive is installed, but the service is not running. Regular backups are critical to ensure that data can be restored in case of data loss or ransomware attacks. Please provide a reason as to why this has not yet been applied."
+                return "Non-compliant: Backup software is installed, but the service is not running. Regular backups are critical to ensure that data can be restored in case of data loss or ransomware attacks. Please provide a reason as to why this has not yet been applied."
             }
         } else {
-            return "Non-compliant: OneDrive is not installed. Without an active backup solution, your data is at risk of being permanently lost in the event of a system failure. Please provide a reason as to why this has not yet been applied."
+            return "Non-compliant: Backup software is not installed. Without an active backup solution, your data is at risk of being permanently lost in the event of a system failure. Please provide a reason as to why this has not yet been applied."
         }
     } catch {
-        return "Error checking OneDrive installation and service status: $_"
+        return "Error checking backup software installation and service status: $_"
     }
 }
 
