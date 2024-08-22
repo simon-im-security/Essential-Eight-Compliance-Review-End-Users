@@ -1,23 +1,80 @@
-# Essential Eight Compliance Review (Maturity Levels 0-1)
+# Essential Eight Compliance Review for End Users
 
-## Description:
-Essential Eight Compliance Review is a PowerShell script designed to check various security compliance measures on a Windows system.
-It covers critical security areas such as application whitelisting, secure admin access, Windows updates, Microsoft Office macro settings, protection-based software, unnecessary services, multi-factor authentication, and daily backup checks.
+## Introduction
 
-## Features:
-- Conducts comprehensive security compliance assessments at introductory maturity levels (0-1)
-- Generates a detailed HTML report highlighting compliance status for each security measure.
-- Provides insights into potential security vulnerabilities and areas for improvement.
+Welcome to the **Essential Eight Compliance Review for End Users** project. This tool is designed to help organisations ensure that their Windows systems comply with the Essential Eight cybersecurity framework. This script focuses on areas relevant to end users, such as verifying that updates are installed, backups are functioning, and the logged-in user's account is correctly configured as a standard account.
 
-## Screenshot:
-![Essential Eight Compliance Review](https://github.com/simon-im-security/Essential-Eight-Compliance-Review/blob/main/essential-eight-compliance-review-image.png)
+## Key Features
 
-## Usage:
-To execute the script, follow these steps:
+- **Admin Account Usage Check**: Verifies that the logged-in user's account is a standard account, not an administrator, to minimise security risks.
+- **Windows Update Verification**: Ensures that the latest Windows updates have been installed within the last 30 days.
+- **Daily Backup Checks**: Confirms that backup services like OneDrive are installed and running to protect against data loss.
+- **Microsoft Office Macros**: Checks that macros in Microsoft Office are appropriately restricted to prevent malicious code execution.
+- **Unnecessary Services Check**: Identifies and flags any unnecessary services running on the system.
+- **Protection-Based Software**: Ensures that essential security software, such as antivirus or endpoint protection, is running.
+- **Application Whitelisting**: Verifies that only approved software is allowed to run, reducing the risk of malware infections.
+- **Multi-Factor Authentication (MFA)**: Confirms that MFA is enabled to provide an additional layer of security.
 
-Open PowerShell and execute the below command. This command will temporarily bypass any execution policy restrictions for the current session, enabling the script to execute before reverting back to the original policy.
-   ```powershell
-   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force; $url = "https://raw.githubusercontent.com/simon-im-security/Essential-Eight-Compliance-Review/main/Essential%20Eight%20Compliance%20Review.ps1"; $tempScriptPath = "$env:TEMP\EssentialEightComplianceReview.ps1"; Invoke-WebRequest -Uri $url -OutFile $tempScriptPath; & $tempScriptPath -ExecutionPolicy Bypass
+## Advantages of the Script
+
+### Automated Compliance Checks
+- The script automates the process of checking key security compliance measures, saving time and reducing the risk of human error.
+- By running this script regularly, organisations can ensure that their systems are consistently aligned with the Essential Eight Level 1 cybersecurity framework.
+
+### Customisable to Organisational Needs
+- The script includes toggles for each compliance check, allowing organisations to enable or disable specific checks based on their requirements.
+- This flexibility ensures that the tool can be tailored to fit the unique security policies and procedures of different organisations.
+
+### End User Engagement
+- The script is designed to interact directly with end users, asking them to provide reasons for any non-compliant areas. This engagement helps raise awareness and reinforces the importance of adhering to security best practices.
+- By involving end users in the compliance process, organisations can foster a culture of responsibility and vigilance among their staff.
+
+### Educational Opportunities
+- Each compliance check in the script includes an explanation of why the check is important. For example, if a user's account is still an administrator, the script informs them of the security risks associated with this configuration.
+- This educational aspect helps users understand the impact of their actions on overall security, making them more likely to follow best practices in the future.
+
+### Visual and Clear Reporting
+- The script generates clear, user-friendly reports that can be shared with IT teams or used for training purposes. These reports highlight areas of concern and can be used as a basis for further education or remediation.
+- The output includes detailed explanations of non-compliant items, making it easier for end users to comprehend and address issues.
+
+### Improved Security Posture
+- By regularly running this script, organisations can ensure that their end users' systems are secure and compliant with the Essential Eight Level 1 framework.
+- The script helps identify potential vulnerabilities before they can be exploited, thus improving the overall security posture of the organisation.
+
+## Informing and Educating End Users
+
+### Incorporating the Script into Onboarding Processes
+- Organisations can include this script as part of the onboarding process for new employees, ensuring that their systems meet security standards from day one.
+- New hires can be introduced to the importance of security compliance through the explanations provided by the script, helping them adopt secure habits early on.
+
+### Regular Compliance Reviews
+- The script can be run at regular intervals (e.g., quarterly) as part of an organisation's security review process. End users receive direct feedback on the compliance status of their systems.
+- This regular interaction keeps security top of mind for users and helps reinforce best practices.
+
+### Security Awareness Training
+- The script can be used as a practical component of security awareness training sessions. End users can run the script themselves, see the results, and discuss the importance of each compliance check in a group setting.
+- IT and security teams can use the results generated by the script to highlight common issues and provide targeted education on specific security topics.
+
+### Proactive Issue Resolution
+- By using the script, end users can identify and resolve security issues before they escalate. The script's feedback mechanism guides users on how to address non-compliant items, making them more proactive in maintaining their own systems.
+- This approach reduces the burden on IT support by empowering users to take action themselves, leading to faster resolution of potential security issues.
+
+## Usage Instructions
+
+```powershell
+# Request Temporary Bypass of Execution Policy
+Set-ExecutionPolicy Bypass -Scope Process -Force
+
+# Download and run the script directly from GitHub
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/simon-im-security/Essential-Eight-Compliance-Review-End-Users/main/Essential%20Eight%20Compliance%20Review%20for%20End%20Users.ps1" -OutFile "$env:TEMP\EssentialEightComplianceReview.ps1"
+& "$env:TEMP\EssentialEightComplianceReview.ps1"
+
 ```
 
-> **Note:** For enhanced accuracy tailored to your enterprise, it is recommended to adjust each function accordingly. For instance, OneDrive may not be the designated enterprise backup service.
+## Sample Output
+
+Below is an example of what you can expect from the script's output:
+
+![Sample Output](https://raw.githubusercontent.com/simon-im-security/Essential-Eight-Compliance-Review-End-Users/main/image_output_sample.png)
+
+---
